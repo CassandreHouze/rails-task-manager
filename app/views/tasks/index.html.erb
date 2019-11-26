@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 class="py-3">MY TASKS</h1>
+    <% @tasks.each do |task| %>
+    <div class="container border">
+    <div class="d-flex align-items-center py-3">
+      <% if task.completed %>
+      <h4 class="py-3 my-3"><i class="fa fa-check-circle"></i></h4>
+      <% else %>
+      <h4 class="py-3 my-3"><i class="fa fa-circle"></i></h4>
+      <% end %>
+      <h3 class="py-3 my-3"><%= link_to task.title, task_path(task.id)%></h3>
+    </div>
+      <%= link_to "Delete task", task_path(task),
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+    </div>
+    <% end %>
+
+  <div class="container border">
+  <p class="align-items-center"><%= link_to 'Add a new task', new_path%></p>
+  </div>
+</div>
